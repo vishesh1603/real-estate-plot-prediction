@@ -49,9 +49,12 @@ with col1:
     city = st.selectbox("City", CITIES)
     property_type = st.selectbox("Property Type", PROPERTY_TYPES)
     area_unit = st.radio("Unit", ["sq.ft.", "gaj"], horizontal=True)
-    area_input = st.number_input("Area", min_value=100, max_value=20000, value=1000, step=50)
-# Convert to sq.ft. since that's what your model expects
-    area = area_input * 9 if area_unit == "gaj" else area_input
+    if area_unit == "gaj":
+       area_input = st.number_input("Area (gaj)", min_value=12, max_value=2200, value=111, step=5)
+       area = area_input * 9
+    else:
+        area_input = st.number_input("Area (sq.ft.)", min_value=100, max_value=20000, value=1000, step=50)
+        area = area_input
     facing = st.selectbox("Facing Direction", FACINGS)
     age_of_property = st.number_input("Age of Property (years)", min_value=0, max_value=50, value=2)
 
