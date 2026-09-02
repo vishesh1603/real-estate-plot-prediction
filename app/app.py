@@ -60,10 +60,21 @@ with col1:
 
 with col2:
     security_deposit = st.number_input("Security Deposit (₹)", min_value=0, value=0, step=5000)
-    locality_score = st.slider("Locality Score (1-10)", min_value=1.0, max_value=10.0, value=6.0, step=0.5)
-    new_resale = st.radio("New or Resale", ["New", "Resale"], horizontal=True)
-    price_negotiable = st.radio("Price Negotiable?", ["Yes", "No"], horizontal=True)
-    furnished = st.radio("Furnished?", ["Yes", "No"], horizontal=True)
+    
+    locality_score = st.slider(
+    "Locality Score (1-10)",
+    min_value=1.0, max_value=10.0, value=6.0, step=0.5,
+    help="A rating of the neighborhood's desirability — factors like connectivity, "
+         "safety, nearby markets/schools, and overall demand. 1 = low, 10 = prime.")
+    new_resale = st.radio(
+    "New or Resale", ["New", "Resale"], horizontal=True,
+    help="Whether the property is newly constructed/unoccupied, or previously owned and being resold.")
+    price_negotiable = st.radio(
+    "Price Negotiable?", ["Yes", "No"], horizontal=True,
+    help="Whether the seller has indicated openness to negotiate the listed price.")
+    furnished = st.radio(
+    "Furnished?", ["Yes", "No"], horizontal=True,
+    help="Whether the property comes with furniture and fixtures included.")
 
 st.subheader("Amenities")
 amenity_labels = [
